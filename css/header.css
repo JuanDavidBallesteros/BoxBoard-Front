@@ -1,0 +1,21 @@
+header{
+    width: 100%;
+    text-align: center;
+}
+
+nav{
+    background-color: rgb(30, 19, 49);
+}
+
+nav div a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 5px auto;
+}
+
+nav div a h1{
+    color: rgb(247, 247, 247);
+    margin-left: 15 px;
+}
