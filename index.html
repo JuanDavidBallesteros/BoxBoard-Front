@@ -24,17 +24,17 @@
               <form>
                 <div class="mb-3">
                   <label for="recipient-name" class="col-form-label">Title:</label>
-                  <input type="text" class="form-control" id="recipient-name">
+                  <input type="text" class="form-control" id="recipient-title">
                 </div>
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label">Description:</label>
-                  <textarea class="form-control" id="message-text"></textarea>
+                  <textarea class="form-control" id="description-text"></textarea>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" id="addCardBtn" class="btn ">Add</button>
+              <button type="button" id="addCardBtn" data-bs-dismiss="modal" class="btn ">Add</button>
             </div>
           </div>
         </div>
@@ -60,43 +60,8 @@
               <div class="col listCol" >
                 <h2>To Do</h2>
 
-                <div id="toDoCol"> 
-                    <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <p class="card-date">fecha</p>
-                          <div class="buttons-card">
-                              <button type="button" class="btn goBack btn-sm">Back</button>
-                              <button type="button" class="btn delete btn-sm">Delete</button>
-                              <button type="button" class="btn gonext btn-sm">Next</button>
-                          </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <p class="card-date">fecha</p> 
-                          <div class="buttons-card">
-                            <button type="button" class="btn delete btn-sm">Delete</button>
-                            <button type="button" class="btn gonext btn-sm">Next</button>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                          <p class="card-date">fecha</p> 
-                          <div class="buttons-card">
-                            <button type="button" class="btn delete btn-sm">Delete</button>
-                            <button type="button" class="btn goBack btn-sm">Back</button>
-                        </div>
-                        </div>
-                    </div>
+                <div class="cards-container" id="toDoCol"> 
+                    
                 </div>
                 <div class="space"> Create a new card</div>
               </div>
@@ -104,7 +69,7 @@
               <div class="col listCol">
                 <h2>Doing</h2>
 
-                <div id="doingCol"> 
+                <div class="cards-container" id="doingCol"> 
 
                 </div>
                 <div class="space"> Drag and drop a card</div>
@@ -113,7 +78,7 @@
               <div class="col listCol">
                 <h2>Done</h2>
 
-                <div id="doneCol">
+                <div class="cards-container" id="doneCol">
 
                 </div>
                 <div class="space"> Drag and drop a card</div>
@@ -129,11 +94,12 @@
 
     </main>
 
-    <footer>
+    <!-- <footer>
         <div class="container-fluid">by Juan David Ballesteros</div>
-    </footer>
+    </footer> -->
     
 </body>
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="js/CardView.js"></script>
 <script src="js/index.js"></script>
