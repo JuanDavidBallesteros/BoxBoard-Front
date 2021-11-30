@@ -19,3 +19,15 @@ nav div a h1{
     color: rgb(247, 247, 247);
     margin-left: 15 px;
 }
+
+#addCardBtn{
+    background-color: rgb(75, 22, 124);
+    padding: auto 5px;
+    color: azure;
+}
+
+#addCardBtn:hover{
+    background-color: rgb(59, 17, 99);
+    padding: auto 5px;
+    color: azure;
+}
