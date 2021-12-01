@@ -104,14 +104,36 @@ class CardView {
     nextAction = (btn) => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            alert("Desea avanzar a " + this.card.title)
+            let response = await fetch("https://box-board.herokuapp.com/api/cards/", {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json'
+                  },
+                body: JSON.stringify(this.card)
+            })
+            if(response.ok){
+                //Alert Show
+            } else {
+                //Alert
+            }
         })
     }
 
     backAction = (btn) => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            alert("Desea mover atras " + this.card.title)
+            let response = await fetch("https://box-board.herokuapp.com/api/cards/", {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json'
+                  },
+                body: JSON.stringify(this.card)
+            })
+            if(response.ok){
+                //Alert Show
+            } else {
+                //Alert
+            }
         })
     }
 
