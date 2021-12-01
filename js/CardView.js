@@ -83,10 +83,21 @@ class CardView {
         }
     }
 
-    deleteAction = (btn) =>{
-        btn.addEventListener('click', (e) => {
+    deleteAction =  (btn) =>{
+        btn.addEventListener('click', async (e) => {
             e.preventDefault();
-            alert("Desea eliminar a " + this.card.title)
+            let response = await fetch("https://box-board.herokuapp.com/api/cards/", {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json'
+                  },
+                body: JSON.stringify(this.card.id)
+            })
+            if(response.ok){
+                //Alert Show
+            } else {
+                //Alert
+            }
         });
     }
 
