@@ -34,12 +34,17 @@ let cards = [
     }
 ]
 
-const load = () => {
+const load = async () => {
+
+    let response = await fetch("https://box-board.herokuapp.com/api/cards");
+    if(response.ok){
+        let data = await response.json();
+
     toDoCol.innerHTML = "";
     doingCol.innerHTML = "";
     doneCol.innerHTML = "";
 
-    cards.forEach(card => {
+    data.forEach(card => {
         let cardView = new CardView(card);
         if(card.status == "todo"){
             cardView.render(toDoCol);
@@ -50,6 +55,8 @@ const load = () => {
         }
         
     });
+    }
+    
 }
 
 load()
