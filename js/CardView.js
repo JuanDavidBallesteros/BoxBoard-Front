@@ -1,8 +1,10 @@
 class CardView {
 
     //State
-    constructor(card) {
+    constructor(card, alert, reload) {
         this.card = card;
+        this.alert = alert;
+        this.load = reload;
         Object.seal(this);
     }
 
@@ -83,56 +85,77 @@ class CardView {
         }
     }
 
-    deleteAction =  (btn) =>{
+    deleteAction = (btn) => {
         btn.addEventListener('click', async (e) => {
             e.preventDefault();
             let response = await fetch("https://box-board.herokuapp.com/api/cards/", {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json'
-                  },
+                },
                 body: JSON.stringify(this.card.id)
             })
-            if(response.ok){
-                //Alert Show
+            if (response.ok) {
+                alert('tarjeta eliminada', 'success')
+                reload()
             } else {
-                //Alert
+                alert('No se pudo completar la acción', 'danger')
             }
         });
     }
 
     nextAction = (btn) => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', async (e) => {
             e.preventDefault();
+
+            let temp = { ...this.card }
+
+            if (this.card.status === "todo") {
+                temp.status = "doing";
+            } else if (this.card.status === "doing") {
+                temp.status = "done";
+            }
+
             let response = await fetch("https://box-board.herokuapp.com/api/cards/", {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json'
-                  },
-                body: JSON.stringify(this.card)
+                },
+                body: JSON.stringify(temp)
             })
-            if(response.ok){
-                //Alert Show
+            if (response.ok) {
+                alert('tarjeta movida', 'success')
+                reload()
             } else {
-                //Alert
+                alert('No se pudo completar la acción', 'danger')
             }
         })
     }
 
     backAction = (btn) => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', async (e) => {
             e.preventDefault();
+
+            let temp = { ...this.card }
+
+            if (this.card.status === "done") {
+                temp.status = "doing";
+            } else if (this.card.status === "doing") {
+                temp.status = "todo";
+            }
+
             let response = await fetch("https://box-board.herokuapp.com/api/cards/", {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json'
-                  },
-                body: JSON.stringify(this.card)
+                },
+                body: JSON.stringify(temp)
             })
-            if(response.ok){
-                //Alert Show
+            if (response.ok) {
+                alert('tarjeta movida', 'success')
+                reload()
             } else {
-                //Alert
+                alert('No se pudo completar la acción', 'danger')
             }
         })
     }
