@@ -29,7 +29,7 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * [Github](https://juandavidballesteros.github.io/BoxBoard-Front/) - Front-end deployment
 
 
-## Athors ✒️
+## Authors ✒️
 
 * **Juan David Ballesteros** - *Front-End Back-End Database* - [JuanDavidBallesteros](https://github.com/JuanDavidBallesteros)
 
