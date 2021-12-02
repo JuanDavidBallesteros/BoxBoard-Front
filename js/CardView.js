@@ -88,13 +88,14 @@ class CardView {
     deleteAction = (btn) => {
         btn.addEventListener('click', async (e) => {
             e.preventDefault();
-            let response = await fetch("https://box-board.herokuapp.com/api/cards/", {
+
+            let response = await fetch("https://box-board.herokuapp.com/api/cards/"+this.card.id, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(this.card.id)
             })
+
             if (response.ok) {
                 alert('tarjeta eliminada', 'success')
                 reload()
