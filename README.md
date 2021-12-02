@@ -17,7 +17,7 @@ Use a table for the project at MySQL Database given by the university, the table
 Finally, the operations supported by the back-end are create, read, update and delete.
 
 
-## Construido con 🛠️
+## Tools 🛠️
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
@@ -29,7 +29,7 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * [Github](https://juandavidballesteros.github.io/BoxBoard-Front/) - Front-end deployment
 
 
-## Autores ✒️
+## Athors ✒️
 
 * **Juan David Ballesteros** - *Front-End Back-End Database* - [JuanDavidBallesteros](https://github.com/JuanDavidBallesteros)
 
