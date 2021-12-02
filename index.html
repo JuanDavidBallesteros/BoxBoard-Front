@@ -14,6 +14,7 @@
 </head>
 <body>
   <div id="liveAlertPlaceholder"></div>
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -59,30 +60,42 @@
             <div class="row align-items-start">
 
               <div class="col listCol" >
-                <h2>To Do</h2>
+                <h2>Por Hacer</h2>
 
-                <div class="cards-container" id="toDoCol"> 
+                <div class="cards-container" 
+                  id="toDoCol" 
+                  ondragover="onDragOver(event);"
+                  ondrop="onDrop(event);"
+                 > 
                     
                 </div>
-                <div class="space"> Create a new card</div>
+                <div class="space">Crea una nueva tarjeta</div>
               </div>
 
               <div class="col listCol">
-                <h2>Doing</h2>
+                <h2>haciendo</h2>
 
-                <div class="cards-container" id="doingCol"> 
+                <div class="cards-container" 
+                  id="doingCol" 
+                  ondragover="onDragOver(event);"
+                  ondrop="onDrop(event);"
+                > 
 
                 </div>
-                <div class="space"> Drag and drop a card</div>
+                <div class="space">Arrastra y suelta en la columna</div>
               </div>
 
               <div class="col listCol">
                 <h2>Done</h2>
 
-                <div class="cards-container" id="doneCol">
+                <div class="cards-container" 
+                  id="doneCol" 
+                  ondragover="onDragOver(event);"
+                  ondrop="onDrop(event);"
+                >
 
                 </div>
-                <div class="space"> Drag and drop a card</div>
+                <div class="space">Arrastra y suelta en la columna</div>
               </div>
 
             </div>

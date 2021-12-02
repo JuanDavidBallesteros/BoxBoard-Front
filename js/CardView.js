@@ -1,10 +1,11 @@
 class CardView {
 
     //State
-    constructor(card, alert, reload) {
+    constructor(card, alert, reload, onDragStart) {
         this.card = card;
         this.alert = alert;
         this.load = reload;
+        this.onDrag = onDragStart;
         Object.seal(this);
     }
 
@@ -12,7 +13,15 @@ class CardView {
     //Metodos
     render = (container) => {
         let div = document.createElement("div");
+
         div.classList.add("card");
+        div.classList.add("draggable");
+
+        div.draggable = true;
+        div.ondragstart =  this.onDrag;
+        div.id = this.card.id;
+
+        //div.addEventListener("dragstart", this.onDragStart);
 
         let html = `
                 <div class="card-body">

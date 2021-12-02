@@ -8,6 +8,8 @@ const descriptionText = document.getElementById("description-text");
 
 var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
+let cards = [];
+
 const load = async () => {
 
     let response = await fetch("https://box-board.herokuapp.com/api/cards");
@@ -18,8 +20,10 @@ const load = async () => {
         doingCol.innerHTML = "";
         doneCol.innerHTML = "";
 
+        cards = data;
+
         data.forEach(card => {
-            let cardView = new CardView(card, alert, reload);
+            let cardView = new CardView(card, alert, reload, onDragStart);
             if (card.status == "todo") {
                 cardView.render(toDoCol);
             } else if (card.status == "doing") {
@@ -91,10 +95,89 @@ const alert = (message, type) => {
     wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
 
     alertPlaceholder.append(wrapper)
+
+    setTimeout(() => {
+        alertPlaceholder.removeChild(wrapper)
+    }, 2500);
 }
 
-/*   if (alertTrigger) {
-    alertTrigger.addEventListener('click', function () {
-      alert('Nice, you triggered this alert message!', 'success')
+const onDragStart = (event) => {
+
+    let parent = event.target;
+
+
+    while (!parent.classList.contains("draggable")) {
+        parent = parent.parentNode;
+    }
+
+    event
+        .dataTransfer
+        .setData('text/plain', parent.id);
+
+    event
+        .currentTarget
+        .style
+        .backgroundColor = "rgba(240, 248, 255, 0.8)";
+
+
+}
+
+function onDragOver(event) {
+    event.preventDefault();
+}
+
+function onDrop(event) {
+    event.preventDefault();
+
+    const id = event
+        .dataTransfer
+        .getData('text');
+
+    let card = cards.find(x => x.id === id);
+
+    let parent = event.target;
+    while (!parent.classList.contains("cards-container")) {
+        parent = parent.parentNode;
+    }
+
+    let col = parent.id;
+    
+    console.log(card)
+
+    if (col === "toDoCol") {
+        card.status = "todo"
+        update(card)
+    } else if (col === "doingCol") {
+        card.status = "doing"
+        update(card)
+    } else if (col === "doneCol") {
+        card.status = "done"
+        update(card)
+    }
+
+
+    if (event.dataTransfer.items) {
+        // Use DataTransferItemList interface to remove the drag data
+        event.dataTransfer.items.clear();
+    } else {
+        // Use DataTransfer interface to remove the drag data
+        event.dataTransfer.clearData();
+    }
+
+}
+
+const update = async (card) => {
+    let response = await fetch("https://box-board.herokuapp.com/api/cards/", {
+        method: "PUT",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(card)
     })
-  } */
+    if (response.ok) {
+        alert('tarjeta movida', 'success')
+        reload()
+    } else {
+        alert('No se pudo completar la acción', 'danger')
+    }
+}
